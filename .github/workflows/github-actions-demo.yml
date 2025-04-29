@@ -14,5 +14,5 @@ jobs:
       - run: echo "🖥️ 该工作流已经准备好测试您的代码了。"
       - name: 列出仓库的文件
         run: |
-          ls ${{ github.workspace }}
+          ls -al ${{ github.workspace }}
       - run: echo "🍏 该任务当前状态是${{ job.status }}。"
