@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Action, NgxsOnInit, State, StateContext } from '@ngxs/store';
-import { SystemAction } from './system.action';
-import * as immutable from 'object-path-immutable';
+import { ChangeTestNumber } from './system.action';
 
 export interface SystemStateModel {
-  isCollapsed: boolean;
+  testNumber: number;
 }
 
 @State<SystemStateModel>({
   name: 'system',
   defaults: {
-    isCollapsed: false,
+    testNumber: 0,
   },
 })
 @Injectable({
@@ -18,13 +17,13 @@ export interface SystemStateModel {
 })
 export class SystemState implements NgxsOnInit {
   ngxsOnInit(ctx: StateContext<any>): void {
-    ctx.patchState({});
+    ctx.patchState({testNumber: 0});
   }
 
-  @Action(SystemAction.UpdateCollapsed)
-  UpdateCollapsed(ctx: StateContext<SystemStateModel>) {
-    let state = ctx.getState();
-    ctx.setState(immutable.set(state, ['isCollapsed'], !state.isCollapsed));
+  @Action(ChangeTestNumber)
+  ChangeTestNumber(ctx: StateContext<SystemStateModel>) {
+    let testNumber = ctx.getState().testNumber + 1;
+    ctx.patchState({testNumber});
   }
 
 }
