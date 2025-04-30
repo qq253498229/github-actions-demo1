@@ -1,6 +1,9 @@
 name: GitHub Actions 示例
 run-name: ${{ github.actor }} 正在测试GitHub Actions 🚀
-on: [ push ]
+on:
+  push:
+    branches:
+      - 'master'
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
