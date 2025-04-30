@@ -4,10 +4,14 @@ jobs:
   RunTesting:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        name: 拉取代码
-      - run: |
+      - name: 拉取代码
+        uses: actions/checkout@v4
+      - name: 打包应用
+        run: |
           npm ci
           npm run build
-          pwd
-          ls -al
+      - name: 部署到gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist/github-actions-demo1/browser
+          branch: gh-pages
