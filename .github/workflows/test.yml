@@ -1,4 +1,4 @@
-name: 打包部署到gh-pages
+name: 打包
 on: push
 permissions:
   contents: write
