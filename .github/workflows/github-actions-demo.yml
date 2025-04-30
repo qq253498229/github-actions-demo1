@@ -1,11 +1,11 @@
-name: GitHub Actions 示例
+name: Actions标题
 run-name: ${{ github.actor }} 正在测试GitHub Actions 🚀
 on:
   push:
     branches:
       - 'master'
 jobs:
-  Explore-GitHub-Actions:
+  测试job:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 该任务通过${{ github.event_name }}事件自动触发。"
