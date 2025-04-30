@@ -1,5 +1,7 @@
 name: 打包部署到gh-pages
 on: push
+permissions:
+  contents: write
 jobs:
   RunTesting:
     runs-on: ubuntu-latest
