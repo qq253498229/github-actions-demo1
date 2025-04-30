@@ -11,7 +11,7 @@ jobs:
       - name: 打包应用
         run: |
           npm ci
-          npm run build
+          npm run build -- --base-href /github-actions-demo1/
       - name: 部署到gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
