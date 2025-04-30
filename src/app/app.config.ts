@@ -1,5 +1,5 @@
-import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { ApplicationConfig, importProvidersFrom, isDevMode, provideZoneChangeDetection } from '@angular/core';
+import { provideRouter, withHashLocation } from '@angular/router';
 import { routes } from './app.routes';
 import { provideNzIcons } from 'ng-zorro-antd/icon';
 import { icons } from './icons-provider';
@@ -16,7 +16,7 @@ registerLocaleData(zh);
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({eventCoalescing: true}),
-    provideRouter(routes),
+    isDevMode() ? provideRouter(routes) : provideRouter(routes, withHashLocation()),
     provideAnimationsAsync(),
     importProvidersFrom(FormsModule),
     provideNzI18n(zh_CN),
